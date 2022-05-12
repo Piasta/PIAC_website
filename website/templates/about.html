@@ -1,22 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>About me</title>
-</head>
-<body>
-<h1>About me </h1>
-<p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-velit..."</p>
-<p> "There is no one who loves pain itself, who seeks after it and wants to have it, simply because
-it is pain..."</p>
- <div id="footer">
-  <a href="/">Home</a>
-  <a href="gallery">Gallery</a>
-  <a href="contact">Contact</a>
-  <a href="about">About me</a>
-  <a href="login">Login</a>
- </div>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}About{% endblock %}
+{% set active_page = "about" -%}
+{% block body %}
+
+{% endblock %}

@@ -1,23 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Login Page</title>
-</head>
-<body>
-<h3>Login Form</h3>
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% set active_page = "login" -%}
+{% block body %}
+
+<h4>Login Form</h4>
 <form method="post">
  <Label>Username: </Label><input type="text" name="username"/><br>
  <label>Password: </label><input type="password" name="password"/><br>
  <input type="submit"/>
 </form>
- <div id="footer">
-  <a href="/">Home</a>
-  <a href="gallery">Gallery</a>
-  <a href="contact">Contact</a>
-  <a href="about">About me</a>
-  <a href="login">Login</a>
- </div>
-</body>
-</html>
+
+{% endblock %}
