@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'cloudap'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_13F20A2A58C24A26BB96B818A468016A }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6914B2450340409E8A92F613ADD2C426 }}
