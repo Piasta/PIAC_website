@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    line-height: 1.4em;
+     vertical-align: baseline;
+    text-decoration: none;
+    outline: 0;
+}
+.grid-box{
+    display: grid;
+	grid-gap: 20px;
+	grid-template-columns: repeat(3, 1fr);
+	margin-bottom: 40px;
+}
+.cell{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 0px 2px rgb(0 0 0 / 7%), 0 5px 6px rgb(0 0 0 / 16%);
+	height: 250px;
+}
+.cell img{
+    height: 250px;
+	width: 300px;
+	object-fit:scale-down;
+	transition: 1s;
+}
+.cell img:hover{
+    filter: grayscale(100%);
+    transform: scale(1.1);
+}
