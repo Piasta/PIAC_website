@@ -1,6 +1,22 @@
 {% extends "base.html" %}
+
 {% block title %}Gallery{% endblock %}
 {% set active_page = "gallery" -%}
 {% block body %}
- <img src="{{ url_for('static', filename='stone.jpg') }}" alt="Stone"><br>
+ <h1 class="display-4">A 3x3 bike gallery</h1>
+ <div class="row mt-3">
+  <div class="col-12">
+   <div class="grid-box">
+    <div class="cell"><a href="static/bike1.jpg" data-lightbox="mygallery" data-title="Bike 1"><img src="static/bike1.jpg" alt="Bike 1"></a></div>
+    <div class="cell"><a href="static/bike2.jpg" data-lightbox="mygallery" data-title="Bike 2"><img src="static/bike2.jpg" alt="Bike 2"></a></div>
+    <div class="cell"><a href="static/bike3.jpg" data-lightbox="mygallery" data-title="Bike 3"><img src="static/bike3.jpg" alt="Bike 3"></a></div>
+    <div class="cell"><a href="static/bike4.jpg" data-lightbox="mygallery" data-title="Bike 4"><img src="static/bike4.jpg" alt="Bike 4"></a></div>
+    <div class="cell"><a href="static/bike5.jpg" data-lightbox="mygallery" data-title="Bike 5"><img src="static/bike5.jpg" alt="Bike 5"></a></div>
+    <div class="cell"><a href="static/bike6.jpg" data-lightbox="mygallery" data-title="Bike 6"><img src="static/bike6.jpg" alt="Bike 6"></a></div>
+    <div class="cell"><a href="static/bike7.jpg" data-lightbox="mygallery" data-title="Bike 7"><img src="static/bike7.jpg" alt="Bike 7"></a></div>
+    <div class="cell"><a href="static/bike8.jpg" data-lightbox="mygallery" data-title="Bike 8"><img src="static/bike8.jpg" alt="Bike 8"></a></div>
+    <div class="cell"><a href="static/bike9.jpg" data-lightbox="mygallery" data-title="Bike 9"><img src="static/bike9.jpg" alt="Bike 9"></a></div>
+   </div>
+  </div>
+ </div>
 {% endblock %}
