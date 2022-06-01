@@ -1,5 +1,5 @@
-from flask import Blueprint, render_template
-from flask import request
+from flask import render_template, Blueprint, redirect, url_for, request
+from flask_dance.contrib.github import github
 
 auth = Blueprint('auth', __name__)
 
@@ -10,6 +10,18 @@ def show_user_profile(username):
         return 'HTTP POST for user %s with password %s' % (username, request.form['password'])
     else:
         return 'HTTP GET for user %s' % username
+
+
+@auth.route('/')
+def github_login():
+    if not github.authorized:
+        return redirect(url_for('github.login'))
+    else:
+        account_info = github.get('/user')
+        if account_info.ok:
+            account_info_json = account_info.json()
+            return render_template('index.html')
+    return '<h1>Request failed!</h1>'
 
 
 @auth.route('/login', methods=['GET', 'POST'])

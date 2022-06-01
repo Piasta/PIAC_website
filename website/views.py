@@ -7,10 +7,6 @@ views = Blueprint('views', __name__)
 @views.route('/')
 def home():
     return render_template('index.html')
-    msg.body = "Hello Flask message sent from Flask-Mail"
-    mail.send(msg)
-    return "Sent"
-
 
 
 @views.route('/help')
