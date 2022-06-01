@@ -13,16 +13,19 @@ def show_user_profile(username):
 
 
 @auth.route('/')
-def github_login():
-    if not github.authorized:
-        return redirect(url_for('github.login'))
-    else:
-        account_info = github.get('/user')
-        if account_info.ok:
-            account_info_json = account_info.json()
-            return render_template('index.html')
+def home():
+    return render_template('index.html')
 
-    return '<h1>Request failed!</h1>'
+# def github_login():
+#     if not github.authorized:
+#         return redirect(url_for('github.login'))
+#     else:
+#         account_info = github.get('/user')
+#         if account_info.ok:
+#             account_info_json = account_info.json()
+#             return render_template('index.html')
+#
+#     return '<h1>Request failed!</h1>'
 
 
 @auth.route('/login', methods=['GET', 'POST'])
