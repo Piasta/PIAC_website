@@ -12,9 +12,9 @@ def show_user_profile(username):
         return 'HTTP GET for user %s' % username
 
 
-@auth.route('/')
-def home():
-    return render_template('index.html')
+# @auth.route('/')
+# def home():
+#     return render_template('index.html')
 
 # def github_login():
 #     if not github.authorized:
