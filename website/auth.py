@@ -21,6 +21,7 @@ def github_login():
         if account_info.ok:
             account_info_json = account_info.json()
             return render_template('index.html')
+
     return '<h1>Request failed!</h1>'
 
 
