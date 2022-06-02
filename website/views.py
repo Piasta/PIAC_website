@@ -22,17 +22,17 @@ def help():
 
 @views.route('/about')
 def about():
-    return render_template('about.html')
+    return render_template('about.html', user=current_user)
 
 
 @views.route('/contact')
 def contact():
-    return render_template('contact.html')
+    return render_template('contact.html', user=current_user)
 
 
 @views.route('/gallery')
 def gallery():
-    return render_template('gallery.html')
+    return render_template('gallery.html', user=current_user)
 
 
 @views.route('/database')
@@ -80,4 +80,4 @@ def home():
             db.session.commit()
             flash('Note added!', category='success')
 
-    return render_template("home.html", user=current_user)
+    return render_template("index.html", user=current_user)
