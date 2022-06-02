@@ -1,12 +1,18 @@
 from flask import abort, make_response
-from flask import render_template, Blueprint
+import mysql.connector
+from flask import Blueprint, render_template, request, flash, jsonify
+from .models import Note
+from . import db
+import json
+from flask_login import login_required, current_user
+
 
 views = Blueprint('views', __name__)
 
 
-@views.route('/home')
-def home():
-    return render_template('index.html')
+# @views.route('/home')
+# def home():
+#     return render_template('index.html')
 
 
 @views.route('/help')
@@ -18,13 +24,29 @@ def help():
 def about():
     return render_template('about.html')
 
+
 @views.route('/contact')
 def contact():
     return render_template('contact.html')
 
+
 @views.route('/gallery')
 def gallery():
     return render_template('gallery.html')
+
+
+@views.route('/database')
+def database():
+    mydb = mysql.connector.connect(
+        host="localhost",
+        database="Guests",
+        user="root",
+        password="datadata1"
+    )
+    mycursor = mydb.cursor()
+    mycursor.execute("SELECT * from guests_list")
+    record = mycursor.fetchall()
+    return str(record)
 
 
 @views.route('/error_denied')
@@ -42,3 +64,20 @@ def error_not_found():
     response = make_response(render_template('template.html', name='ERROR 404'), 404)
     response.headers['X-Something'] = 'A value'
     return response
+
+
+@views.route('/', methods=['GET', 'POST'])
+@login_required
+def home():
+    if request.method == 'POST':
+        note = request.form.get('note')
+
+        if len(note) < 1:
+            flash('Note is too short!', category='error')
+        else:
+            new_note = Note(data=note, user_id=current_user.id)
+            db.session.add(new_note)
+            db.session.commit()
+            flash('Note added!', category='success')
+
+    return render_template("home.html", user=current_user)
