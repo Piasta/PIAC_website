@@ -9,17 +9,17 @@ from flask_login import login_user, login_required, logout_user, current_user
 auth = Blueprint('auth', __name__)
 
 
-@auth.route('/')
-def github_login():
-    if not github.authorized:
-        return redirect(url_for('github.login'))
-    else:
-        account_info = github.get('/user')
-        if account_info.ok:
-            account_info_json = account_info.json()
-            return render_template('sign_up.html', user=current_user)
-
-    return '<h1>Request failed!</h1>'
+# @auth.route('/')
+# def github_login():
+#     if not github.authorized:
+#         return redirect(url_for('github.login'))
+#     else:
+#         account_info = github.get('/user')
+#         if account_info.ok:
+#             account_info_json = account_info.json()
+#             return render_template('sign_up.html', user=current_user)
+#
+#     return '<h1>Request failed!</h1>'
 
 
 @auth.route('/login', methods=['GET', 'POST'])
