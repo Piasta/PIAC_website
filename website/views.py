@@ -1,5 +1,4 @@
 from flask import abort, make_response
-import mysql.connector
 from flask import Blueprint, render_template, request, flash, jsonify
 from .models import Note
 from . import db
@@ -10,43 +9,16 @@ from flask_login import login_required, current_user
 views = Blueprint('views', __name__)
 
 
-# @views.route('/home')
-# def home():
-#     return render_template('index.html')
-
-
-@views.route('/help')
-def help():
-    return "Help me"
-
-
-@views.route('/about')
-def about():
-    return render_template('about.html', user=current_user)
-
-
 @views.route('/contact')
+@login_required
 def contact():
     return render_template('contact.html', user=current_user)
 
 
 @views.route('/gallery')
+@login_required
 def gallery():
     return render_template('gallery.html', user=current_user)
-
-
-@views.route('/database')
-def database():
-    mydb = mysql.connector.connect(
-        host="localhost",
-        database="Guests",
-        user="root",
-        password="datadata1"
-    )
-    mycursor = mydb.cursor()
-    mycursor.execute("SELECT * from guests_list")
-    record = mycursor.fetchall()
-    return str(record)
 
 
 @views.route('/error_denied')
@@ -69,6 +41,12 @@ def error_not_found():
 @views.route('/', methods=['GET', 'POST'])
 @login_required
 def home():
+    return render_template("index.html", user=current_user)
+
+
+@views.route('/notes', methods=['GET', 'POST'])
+@login_required
+def notes():
     if request.method == 'POST':
         note = request.form.get('note')
 
@@ -80,4 +58,17 @@ def home():
             db.session.commit()
             flash('Note added!', category='success')
 
-    return render_template("index.html", user=current_user)
+    return render_template("notes.html", user=current_user)
+
+
+@views.route('/delete-note', methods=['POST'])
+def delete_note():
+    note = json.loads(request.data)
+    noteId = note['noteId']
+    note = Note.query.get(noteId)
+    if note:
+        if note.user_id == current_user.id:
+            db.session.delete(note)
+            db.session.commit()
+
+    return jsonify({})

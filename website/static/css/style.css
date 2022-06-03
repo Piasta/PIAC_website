@@ -3,7 +3,7 @@
     padding: 0;
     border: 0;
     line-height: 1.4em;
-     vertical-align: baseline;
+    vertical-align: baseline;
     text-decoration: none;
     outline: 0;
 }
@@ -30,4 +30,24 @@
 .cell img:hover{
     filter: grayscale(100%);
     transform: scale(1.1);
+}
+.forms {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+#notes {
+    width: 400px;
+    margin: 0 auto;
+    padding-bottom: 3px;
+    justify-content: center;
+}
+form {
+    width:400px;
+    margin: 0 auto;
+    justify-content: center;
+}
+.notes-form {
+    padding-bottom: 2%;
 }

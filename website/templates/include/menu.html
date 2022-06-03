@@ -1,9 +1,8 @@
 {% if user.is_authenticated %}
 {% set navigation = [
 {'url': 'views.home', 'display_name': 'Home'},
-{'url': 'views.database', 'display_name': 'Guests list'},
+{'url': 'views.notes', 'display_name': 'Notes'},
 {'url': 'views.gallery', 'display_name': 'Gallery'},
-{'url': 'views.about', 'display_name': 'About Me'},
 {'url': 'views.contact', 'display_name': 'Contact'},
 {'url': 'auth.logout', 'display_name': 'Logout'},
 ] -%}
@@ -65,5 +64,5 @@
 
     <script
       type="text/javascript"
-      src="{{ url_for('static', filename='index.js') }}"
+      src="{{ url_for('static', filename='js/index.js') }}"
     ></script>

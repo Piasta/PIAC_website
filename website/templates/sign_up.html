@@ -2,7 +2,7 @@
 {% block title %}Sign Up{% endblock %}
 {% set active_page = "sign_up" -%}
 {% block body %}
-<form method="POST">
+<form class="forms" method="POST">
   <h3 align="center">Sign Up</h3>
   <div class="form-group">
     <label for="email">Email Address</label>
@@ -44,6 +44,8 @@
       placeholder="Confirm password"
     />
   </div>
+  <a href="login">If you already have an account clik here!</a>
+  <br />
   <br />
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
