@@ -20,7 +20,7 @@ auth = Blueprint('auth', __name__)
 #             return render_template('sign_up.html', user=current_user)
 #
 #     return '<h1>Request failed!</h1>'
-
+#
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
